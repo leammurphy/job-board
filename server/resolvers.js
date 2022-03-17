@@ -1,7 +1,11 @@
 const db = require('./db');
 
 const Query = {
-  jobs: () => db.jobs.list() // return arr of jobs from db
+  jobs: () => db.jobs.list(), // return arr of jobs from db
 };
 
-module.exports = { Query };
+const Job = {
+  company: (job) => db.companies.get(job.companyId) // return a company whose id is the same as the company id of this job
+};
+
+module.exports = { Query, Job };

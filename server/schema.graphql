@@ -2,8 +2,15 @@ type Query {
   jobs: [Job] # return an arr of Job objects, each job has multiple fields(id, title, description)
 }
 
+type Company {
+  id: ID!
+  name: String
+  description: String
+}
+
 type Job { # custom type
   id: ID! # exclamation mark means id should never be null, in other words, each object of type Job MUST have an id
   title: String
+  company: Company
   description: String
 }
