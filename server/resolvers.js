@@ -1,7 +1,8 @@
 const db = require('./db');
 
 const Query = {
-  jobs: () => db.jobs.list(), // return arr of jobs from db
+  job: (root, {id}) => db.jobs.get(id), // pass gql args, parent val and args(the args from the gql query). return the specified job from the db using the id from args
+  jobs: () => db.jobs.list(), // return arr of jobs from db  
 };
 
 const Job = {
