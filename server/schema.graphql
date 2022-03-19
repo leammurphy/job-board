@@ -4,6 +4,10 @@ type Query {
   jobs: [Job] # return an arr of Job objects, each job has multiple fields(id, title, description)
 }
 
+type Mutation {
+  createJob(companyId: ID, title: String, description: String): ID # all mutations must return a result like queries.
+}
+
 type Company {
   id: ID!
   name: String
