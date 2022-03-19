@@ -5,7 +5,7 @@ type Query {
 }
 
 type Mutation {
-  createJob(companyId: ID, title: String, description: String): ID # all mutations must return a result like queries.
+  createJob(input: CreateJobInput): Job # all mutations must return a result like queries.
 }
 
 type Company {
@@ -19,5 +19,11 @@ type Job { # custom type
   id: ID! # exclamation mark means id should never be null, in other words, each object of type Job MUST have an id
   title: String
   company: Company
+  description: String
+}
+
+input CreateJobInput {
+  companyId: ID
+  title: String
   description: String
 }
