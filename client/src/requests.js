@@ -22,7 +22,7 @@ const client = new ApolloClient({
     authLink,
     new HttpLink({uri: endpointURL})
   ]),
-  cache: new InMemoryCache() // one of the main features of ApolloClient
+  cache: new InMemoryCache() // one of the main features of ApolloClient, caching is good bc it avoids making more calls to the server than it needs to 
 });
 
 export async function createJob(input) {
@@ -84,7 +84,7 @@ export async function loadJobs() { // call server and fetch jobs data
         }
       }
     }`
-    const {data: {jobs}} = await client.query({query});
+    const {data: {jobs}} = await client.query({query, fetchPolicy: 'no-cache'});
   return jobs;
 }
 
