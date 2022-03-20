@@ -7,15 +7,11 @@ const Query = {
 };
 
 const Mutation = {
-  // Check user is authenticated
-
-
   createJob: (root, {input}, {user}) => {
     if (!user) {
       throw new Error("Unauthorized ");
     }
-    console.log(user);
-    const id = db.jobs.create(input);  // create new job
+    const id = db.jobs.create({...input, companyId: user.companyId});  // create new job
     return db.jobs.get(id);
   }
 };
